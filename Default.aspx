@@ -5,13 +5,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Gestión de Prioridades</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"/>
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css"/>
     <link rel="stylesheet" href="styles/prioridades.css" />
+    <script>
+        $(function () {
+            $("#detail").draggable();
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div id="header" class="header">
-        <h2>GESTIÓN DE PRIORIDADES</h2>
-        Localidad:
+        <h2>Gestión de Prioridades</h2>
+        LoLoLocalidad:
         <asp:DropDownList ID="ddlInmuebles" runat="server" DataSourceID="SqlDataSource1" DataTextField="Localidad" DataValueField="idLocalidad" AutoPostBack="True"></asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TurnosConnectionString %>" SelectCommand="SELECT Cat_Servidores_Localidad.IpVirtual, Cat_Servidores_Localidad.idLocalidad, CL.Localidad FROM Cat_Servidores_Localidad INNER JOIN Cat_Localidad AS CL ON Cat_Servidores_Localidad.idLocalidad = CL.Id ORDER BY CL.Localidad"></asp:SqlDataSource>
         &nbsp;&nbsp;IP:
@@ -53,8 +63,7 @@
         </asp:SqlDataSource>
     </div>
     <div id="detail" class="detail">
-
-        <asp:DetailsView ID="dvDetalle" runat="server" AutoGenerateRows="False" CellPadding="4" DataKeyNames="IdFuncion" DataSourceID="SqlDataSource3" ForeColor="#333333" GridLines="None" Height="50px" Width="125px" OnItemCreated="dvDetalle_ItemCreated">
+        <asp:DetailsView ID="dvDetalle" runat="server" AutoGenerateRows="False" CellPadding="4" DataKeyNames="IdFuncion" DataSourceID="SqlDataSource3" ForeColor="#333333" GridLines="None" Height="50px" Width="125px" OnItemCreated="dvDetalle_ItemCreated" HeaderText="Detalle">
             <AlternatingRowStyle BackColor="White" />
             <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
             <EditRowStyle BackColor="#2461BF" />
@@ -62,7 +71,9 @@
             <Fields>
                 <asp:BoundField DataField="IdFuncion" HeaderText="idFunción" InsertVisible="False" ReadOnly="True" SortExpression="IdFuncion" />
                 <asp:BoundField DataField="Funcion" HeaderText="Función" SortExpression="Funcion" />
-                <asp:BoundField DataField="textoPlano" HeaderText="textoPlano" SortExpression="textoPlano" />
+                <asp:BoundField DataField="textoPlano" HeaderText="textoPlano" SortExpression="textoPlano" >
+                <ItemStyle Wrap="False" />
+                </asp:BoundField>
                 <asp:BoundField DataField="IdLocalidad" HeaderText="idLocalidad" SortExpression="IdLocalidad" />
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripción" SortExpression="Descripcion" />
                 <asp:CheckBoxField DataField="Activo" HeaderText="Activo" SortExpression="Activo" />
@@ -81,7 +92,7 @@
                 <asp:Parameter Name="Funcion" Type="String" />
                 <asp:Parameter Name="textoPlano" Type="String" />
                 <asp:Parameter Name="IdLocalidad" Type="Int32" />
-                <asp:Parameter Name="Descripcion" Type="String" />
+                <asp:Parameter Name="Descripcion" Type="String" DefaultValue="" />
                 <asp:Parameter Name="Activo" Type="Boolean" />
             </InsertParameters>
             <SelectParameters>
@@ -96,7 +107,6 @@
                 <asp:Parameter Name="original_IdFuncion" />
             </UpdateParameters>
         </asp:SqlDataSource>
-
     </div>
     </form>
 </body>

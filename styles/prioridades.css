@@ -12,7 +12,7 @@
 }
 
 .master {
-    float:left;
+    float: left;
     text-align: center;
     border: 1px;
     border-color: lightgray;
@@ -28,13 +28,13 @@
 .detail {
     float: right;
     border: 1px;
-    border-color: lightgray;
+    border-color: black;
     border-style: solid;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 0.5em;
-    background-color: aliceblue;
+    background-color: royalblue;
 }
 

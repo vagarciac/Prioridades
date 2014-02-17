@@ -6,10 +6,9 @@
 <head runat="server">
     <title>Gestión de Prioridades</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"/>
-    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css"/>
+    <link rel="stylesheet" href="styles/jquery-ui.css"/>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/jquery-ui.js"></script>
     <link rel="stylesheet" href="styles/prioridades.css" />
     <script>
         $(function () {
@@ -21,7 +20,7 @@
     <form id="form1" runat="server">
     <div id="header" class="header">
         <h2>Gestión de Prioridades</h2>
-        LoLoLocalidad:
+        Localidad:
         <asp:DropDownList ID="ddlInmuebles" runat="server" DataSourceID="SqlDataSource1" DataTextField="Localidad" DataValueField="idLocalidad" AutoPostBack="True"></asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TurnosConnectionString %>" SelectCommand="SELECT Cat_Servidores_Localidad.IpVirtual, Cat_Servidores_Localidad.idLocalidad, CL.Localidad FROM Cat_Servidores_Localidad INNER JOIN Cat_Localidad AS CL ON Cat_Servidores_Localidad.idLocalidad = CL.Id ORDER BY CL.Localidad"></asp:SqlDataSource>
         &nbsp;&nbsp;IP:

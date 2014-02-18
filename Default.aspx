@@ -11,6 +11,7 @@
     <script src="js/jquery-ui.js"></script>
     <link rel="stylesheet" href="styles/prioridades.css" />
     <script>
+        $(document).tooltip({ position: { my: "left+15 center", at: "right center" } });
         $(function () {
             $("#detail").draggable();
         });
@@ -21,7 +22,7 @@
     <div id="header" class="header">
         <h2>Gestión de Prioridades</h2>
         Localidad:
-        <asp:DropDownList ID="ddlInmuebles" runat="server" DataSourceID="SqlDataSource1" DataTextField="Localidad" DataValueField="idLocalidad" AutoPostBack="True"></asp:DropDownList>
+        <asp:DropDownList ID="ddlInmuebles" runat="server" DataSourceID="SqlDataSource1" DataTextField="Localidad" DataValueField="idLocalidad" AutoPostBack="True" ToolTip="Selecciona una localidad"></asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TurnosConnectionString %>" SelectCommand="SELECT Cat_Servidores_Localidad.IpVirtual, Cat_Servidores_Localidad.idLocalidad, CL.Localidad FROM Cat_Servidores_Localidad INNER JOIN Cat_Localidad AS CL ON Cat_Servidores_Localidad.idLocalidad = CL.Id ORDER BY CL.Localidad"></asp:SqlDataSource>
         &nbsp;&nbsp;IP:
         <asp:DropDownList ID="ddlIP" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource4" DataTextField="IpVirtual" DataValueField="Inmueble"></asp:DropDownList>
@@ -32,7 +33,7 @@
         </asp:SqlDataSource>
         <br /><br />
     </div>
-    <div id="master" class="master">
+    <div id="master" class="master" title="Dar click a un botón para seleccionar un registro y desplegar su detalle.">
         <asp:GridView ID="gvMaestro" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None" PageSize="15" AllowPaging="True" AllowSorting="True" DataKeyNames="IdFuncion" OnPreRender="gvMaestro_PreRender">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -62,7 +63,7 @@
         </asp:SqlDataSource>
     </div>
     <div id="detail" class="detail">
-        <asp:DetailsView ID="dvDetalle" runat="server" AutoGenerateRows="False" CellPadding="4" DataKeyNames="IdFuncion" DataSourceID="SqlDataSource3" ForeColor="#333333" GridLines="None" Height="50px" Width="125px" OnItemCreated="dvDetalle_ItemCreated" HeaderText="Detalle">
+        <asp:DetailsView ID="dvDetalle" runat="server" AutoGenerateRows="False" CellPadding="4" DataKeyNames="IdFuncion" DataSourceID="SqlDataSource3" ForeColor="#333333" GridLines="None" Height="50px" Width="125px" OnItemCreated="dvDetalle_ItemCreated" HeaderText="Detalle" ToolTip="Dar click sobre el botón correspondiente para borrar/agregar un registro.">
             <AlternatingRowStyle BackColor="White" />
             <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
             <EditRowStyle BackColor="#2461BF" />
@@ -74,7 +75,7 @@
                 <ItemStyle Wrap="False" />
                 </asp:BoundField>
                 <asp:BoundField DataField="IdLocalidad" HeaderText="idLocalidad" SortExpression="IdLocalidad" />
-                <asp:BoundField DataField="Descripcion" HeaderText="Descripción" SortExpression="Descripcion" />
+                <asp:BoundField DataField="Descripcion" HeaderText="Descripción" SortExpression="Descripcion"/>
                 <asp:CheckBoxField DataField="Activo" HeaderText="Activo" SortExpression="Activo" />
                 <asp:CommandField ShowDeleteButton="True" ShowInsertButton="True" ButtonType="Button" CancelText="Salir" DeleteText="Borrar" InsertText="Insertar" NewText="Agregar" />
             </Fields>
@@ -91,7 +92,7 @@
                 <asp:Parameter Name="Funcion" Type="String" />
                 <asp:Parameter Name="textoPlano" Type="String" />
                 <asp:Parameter Name="IdLocalidad" Type="Int32" />
-                <asp:Parameter Name="Descripcion" Type="String" DefaultValue="" />
+                <asp:Parameter Name="Descripcion" Type="String" />
                 <asp:Parameter Name="Activo" Type="Boolean" />
             </InsertParameters>
             <SelectParameters>

@@ -9,16 +9,26 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        SqlDataSource3.InsertParameters["Descripcion"].DefaultValue = "Hola";
+        
+    }
+
+    protected void gvMaestro2_PreRender(object sender, EventArgs e)
+    {
+        //SqlDataSource7.ConnectionString = "Data Source=" + ddlIP2.SelectedItem.Text + "\\SQLEXPRESS;Initial Catalog=Turnos;User ID=writer;Password=Wr1ter";
     }
 
     protected void gvMaestro_PreRender(object sender, EventArgs e)
     {
-        //SqlDataSource2.ConnectionString = "Data Source=" + ddlIP.SelectedItem.Text + "\\SQLEXPRESS;Initial Catalog=Turnos;User ID=writer;Password=Wr1ter";
+        //SqlDataSource3.ConnectionString = "Data Source=" + ddlIP.SelectedItem.Text + "\\SQLEXPRESS;Initial Catalog=Turnos;User ID=writer;Password=Wr1ter";
+    }
+
+    protected void dvDetalle2_ItemCreated(object sender, EventArgs e)
+    {
+        //SqlDataSource8.ConnectionString = "Data Source=" + ddlIP2.SelectedItem.Text + "\\SQLEXPRESS;Initial Catalog=Turnos;User ID=writer;Password=Wr1ter";
     }
 
     protected void dvDetalle_ItemCreated(object sender, EventArgs e)
     {
-        //SqlDataSource3.ConnectionString = "Data Source=" + ddlIP.SelectedItem.Text + "\\SQLEXPRESS;Initial Catalog=Turnos;User ID=writer;Password=Wr1ter";
+        //SqlDataSource4.ConnectionString = "Data Source=" + ddlIP.SelectedItem.Text + "\\SQLEXPRESS;Initial Catalog=Turnos;User ID=writer;Password=Wr1ter";
     }
 }

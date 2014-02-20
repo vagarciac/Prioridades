@@ -1,0 +1,25 @@
+﻿.ui-tabs .status1 {
+    background: aquamarine;
+    font-size: small;
+}
+.ui-tabs .status2 {
+    background: lightblue;
+    font-size: small;
+}
+
+.servicios {
+    float: left;
+    border: 1px;
+    border-color: lightgray;
+    border-style: solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 0.5em;
+    background-color: aliceblue;
+}
+
+.centrar {
+    text-align: center;
+}

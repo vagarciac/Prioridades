@@ -9,7 +9,8 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        tbPrioridad.Text = "ABC";
+        tbServicio.Text = "ABC";
     }
 
     protected void gvMaestro2_PreRender(object sender, EventArgs e)
